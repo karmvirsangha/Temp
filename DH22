@@ -1,0 +1,22 @@
+
+int DHTPIN = 4;
+#define DHTTYPE DHT22
+int DHTTYPE;
+String temperature;
+
+void setup() {
+    
+   pinMode(DHTPIN,INPUT);
+}
+
+void loop() {
+  // Wait for 1 sec
+  delay (1000);
+
+  temperature = digitalRead(DHTPIN);
+  
+  Particle.publish("temp", String(temperature), PRIVATE);
+  // Wait for 3 sec
+  delay(3000);
+  
+}
